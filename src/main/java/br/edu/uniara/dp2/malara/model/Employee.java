@@ -20,8 +20,11 @@ public class Employee {
 
     private String role;
 
-    public Employee(String name, String role) {
+    private String sobrenome;
+
+    public Employee(String name, String role, String sobrenome) {
         this.name = name;
         this.role = role;
+        this.sobrenome = sobrenome;
     }
 }
