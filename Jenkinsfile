@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Clonar repositório') {
             steps {
-                git branch: 'main', url: 'https://github.com/CaioSeisdedos/ativFelipe.git'
+                git branch: 'master', url: 'https://github.com/CaioSeisdedos/ativFelipe.git'
             }
         }
         stage('Construir ') {
