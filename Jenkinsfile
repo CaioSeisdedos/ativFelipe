@@ -1,22 +1,21 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout SCM') {
+        stage('Clonar repositório') {
             steps {
-                git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/CaioSeisdedos/ativFelipe.git'
+                git branch: 'main', url: 'https://github.com/CaioSeisdedos/ativFelipe.git'
             }
         }
-        stage('Build') {
+        stage('Construir ') {
             steps {
-                sh 'mvn clean install'
+                sh 'chmod +x gradlew'
+                sh './gradlew build'
             }
         }
-        stage('Test') {
+        stage('Testar') {
             steps {
-                sh 'mvn test'
+                sh './gradlew test'
             }
         }
     }
 }
-
