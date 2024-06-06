@@ -33,7 +33,7 @@ public class EmployeeControllerTest {
 
     @Test
     void testInsert() {
-        Employee employee = new Employee("John Doe", "Developer");
+        Employee employee = new Employee("John Doe", "Developer", "SOBRENOME");
         when(repository.save(employee)).thenReturn(employee);
 
         ResponseEntity<Employee> response = controller.insert(employee);
@@ -44,7 +44,7 @@ public class EmployeeControllerTest {
     @Test
     void testOne() {
         Long id = 1L;
-        Employee employee = new Employee("John Doe", "Developer");
+        Employee employee = new Employee("John Doe", "Developer", "SOBRNOME");
         when(repository.findById(id)).thenReturn(Optional.of(employee));
 
         Employee result = controller.one(id);
