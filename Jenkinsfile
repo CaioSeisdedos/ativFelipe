@@ -1,21 +1,22 @@
 pipeline {
     agent any
+
     stages {
-        stage('Clonar repositório Codigo Modificado') {
+        stage('Checkout SCM') {
             steps {
-                git branch: 'main', url: 'https://github.com/CaioSeisdedos/ativFelipe.git'
+                git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/CaioSeisdedos/ativFelipe.git'
             }
         }
-        stage('Construir Codigo Modificado') {
+        stage('Build') {
             steps {
-                sh 'chmod +x gradlew'
-                sh './gradlew build'
+                sh 'mvn clean install'
             }
         }
-        stage('Testar Codigo Modificado') {
+        stage('Test') {
             steps {
-                sh './gradlew test'
+                sh 'mvn test'
             }
         }
     }
 }
+
